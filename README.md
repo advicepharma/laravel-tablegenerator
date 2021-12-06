@@ -1,4 +1,4 @@
-# Very short description of the package
+# Table generator
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/advicepharma/tablegenerator.svg?style=flat-square)](https://packagist.org/packages/advicepharma/tablegenerator)
 [![Total Downloads](https://img.shields.io/packagist/dt/advicepharma/tablegenerator.svg?style=flat-square)](https://packagist.org/packages/advicepharma/tablegenerator)
