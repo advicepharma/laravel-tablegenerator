@@ -46,7 +46,7 @@ class Column implements ColumnContract{
      * @param string|null $field
      * @return Column
      */
-    public function field(string $field = null){
+    public function field($field = null){
         if($field === null){
             return $this->field;
         }else{
@@ -61,7 +61,7 @@ class Column implements ColumnContract{
      * @param string|null $label
      * @return Column
      */
-    public function label(string $label = null){
+    public function label($label = null){
         if($label === null){
             return $this->label;
         }else{
