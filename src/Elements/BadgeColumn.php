@@ -46,9 +46,11 @@ class BadgeColumn extends Column implements CustomColumnContract{
 
     public function field($field = null){
 
-        $this->properties['field'] = $field;
+        if($field !== null){
+            $this->properties['field'] = $field;
+        }
 
-        return $this;
+        return parent::field($field);
     }
 
     public function addProperty($property, $value){
