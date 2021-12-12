@@ -9,7 +9,7 @@ class BadgeColumn extends Column implements CustomColumnContract{
 
     public array $properties;
 
-    public $type = 'Badge';
+    public $type = 'badge';
 
 
     public function __construct(){
