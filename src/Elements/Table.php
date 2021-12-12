@@ -68,9 +68,7 @@ class Table{
      * @return array
      */
     public function generateColumns(){
-        return collect($this->columns)->map(function ($column){
-            return $column->generate();
-        })->toArray();
+        return $this->columns;
     }
 
     /**
