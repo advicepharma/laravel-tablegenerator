@@ -90,6 +90,41 @@ $table->->table()
         )
 ```
 
+## Action column
+
+Action column are used to render actions in the table.
+Default action are edit and delete:
+
+```php
+(new ActionColumn)
+    ->label('')
+    ->addAction(
+        (new Action)
+            ->type(Action::ACTION_EDIT)
+            ->properties(
+                [
+                    'link_to' => '/account/users/#id#'
+                ]
+            )
+    )
+    ->addAction(
+        (new Action)
+            ->type(Action::ACTION_DELETE)
+            ->properties(
+                [
+                    'confirm' => true,
+                    'confirm_message' => 'Do you really want to delete this user?',
+                    'link_to' => route('user.destroy', '#id#', false)
+                ]
+            )
+    )
+```
+
+`type` can be whatever you want: this two are the default one.
+
+`properties` can contains all the properties that are going to be consumed by frontend
+
+
 ## Pagination
 
 Pagination is super easy: you have to add `->paginate()` to create default pagination structure.
