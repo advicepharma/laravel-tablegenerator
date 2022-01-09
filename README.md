@@ -124,6 +124,7 @@ Default action are edit and delete:
 
 `properties` can contains all the properties that are going to be consumed by frontend
 
+
 ## Pagination
 
 Pagination is super easy: you have to add `->paginate()` to create default pagination structure.
