@@ -90,12 +90,20 @@ $table->->table()
         )
 ```
 
+## Pagination
+
+Pagination is super easy: you have to add `->paginate()` to create default pagination structure.
+If you want, you can specify the pagesize passing an integer value `->paginate(100)`
+
 ## Api resource
+
 If you want to use ApiResource feature, you can add it with
+
 ```php
 $table->->table()
     ->withResource(YourResource::class)
 ```
+
 ## Relationship column
 
 If you are working with a QueryBuilder with relationship, like:

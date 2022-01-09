@@ -35,6 +35,13 @@ class Tablegenerator
     protected bool $paginate;
 
     /**
+     * Page size
+     *
+     * @var int
+     */
+    protected int $pagesize;
+
+    /**
      * If should show filters
      *
      * @var boolean
@@ -109,8 +116,9 @@ class Tablegenerator
      *
      * @return void
      */
-    public function paginate(){
+    public function paginate(int $pagesize = 20){
         $this->paginate = true;
+        $this->pagesize = $pagesize;
         return $this;
     }
 
@@ -162,7 +170,7 @@ class Tablegenerator
         }
 
         if($this->paginate){
-            $this->query = $this->query->paginate();
+            $this->query = $this->query->paginate($this->pagesize);
         }else{
             $this->query = $this->query->get();
         }
