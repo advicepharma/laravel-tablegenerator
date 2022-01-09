@@ -64,7 +64,7 @@ $table->query($users)
 Adding column accpets array of `Column` or `Column` object.
 
 ```php
-$tablle->->table()
+$table->->table()
         ->addColumn(
             [
                 (new Column)
@@ -80,7 +80,7 @@ $tablle->->table()
 or:
 
 ```php
-$tablle->->table()
+$table->->table()
         ->addColumn(
             (new Column)
                 ->field('name')
@@ -90,6 +90,12 @@ $tablle->->table()
         )
 ```
 
+## Api resource
+If you want to use ApiResource feature, you can add it with
+```php
+$table->->table()
+    ->withResource(YourResource::class)
+```
 ## Relationship column
 
 If you are working with a QueryBuilder with relationship, like:

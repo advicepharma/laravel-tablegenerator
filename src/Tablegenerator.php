@@ -2,6 +2,7 @@
 
 namespace Advicepharma\Tablegenerator;
 
+use App\Http\Resources\UserResource;
 use Spatie\QueryBuilder\QueryBuilder;
 use Illuminate\Database\Eloquent\Model;
 use Advicepharma\Tablegenerator\Elements\Table;
@@ -47,6 +48,13 @@ class Tablegenerator
      */
     protected bool $sort;
 
+    /**
+     * Resource to be applied
+     *
+     * @var string
+     */
+    protected string $resource = '';
+
     private $filters = null;
     private $sorts = null;
 
@@ -82,6 +90,17 @@ class Tablegenerator
         );
 
         $this->query = $query;
+        return $this;
+    }
+
+    /**
+     * Add resource object
+     *
+     * @param string $resource
+     * @return Table
+     */
+    public function withResource(string $resource){
+        $this->resource = $resource;
         return $this;
     }
 
@@ -144,11 +163,15 @@ class Tablegenerator
 
         if($this->paginate){
             $this->query = $this->query->paginate();
+        }else{
+            $this->query = $this->query->get();
         }
 
         return [
             'columns' => $this->table->generateColumns(),
-            'data' => $this->query
+            'data' => ($this->resource
+                        ? $this->resource::collection($this->query)->response()->getData(true)
+                        : $this->query)
         ];
 
     }

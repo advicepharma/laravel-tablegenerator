@@ -16,6 +16,9 @@ class Table{
      */
     protected array $columns;
 
+    /**
+     * Constructor
+     */
     public function __construct(){
         $this->columns = [];
     }
@@ -101,7 +104,5 @@ class Table{
                     ->toArray();
 
     }
-
-
 
 }
