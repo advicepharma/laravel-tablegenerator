@@ -24,6 +24,7 @@ class ActionColumn extends Column implements ColumnContract{
     public function  __construct(){
         parent::__construct();
         $this->actions = [];
+        $this->type = "actions";
     }
 
     /**
