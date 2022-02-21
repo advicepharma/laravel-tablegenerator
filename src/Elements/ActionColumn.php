@@ -19,7 +19,7 @@ class ActionColumn extends Column implements ColumnContract{
      *
      * @var string
      */
-    public string $type = 'actions';
+    //public string $type = 'actions';
 
     public function  __construct(){
         parent::__construct();
@@ -33,7 +33,10 @@ class ActionColumn extends Column implements ColumnContract{
      * @return ActionColumn
      */
     public function addAction($action){
-        $this->actions[] = $action;
+        if($action !== null){
+            $this->actions[] = $action;
+        }
+
         return $this;
     }
 

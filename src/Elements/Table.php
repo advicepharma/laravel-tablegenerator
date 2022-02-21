@@ -16,6 +16,9 @@ class Table{
      */
     protected array $columns;
 
+    /**
+     * Constructor
+     */
     public function __construct(){
         $this->columns = [];
     }
@@ -68,7 +71,11 @@ class Table{
      * @return array
      */
     public function generateColumns(){
-        return $this->columns;
+        return collect($this->columns)
+                    ->filter(function ($item, $key) {
+                        return $item->permission === "" || auth()->user()->roles->first()->hasPermissionTo($item->permission);
+                    })
+                    ->toArray();
     }
 
     /**
@@ -101,7 +108,5 @@ class Table{
                     ->toArray();
 
     }
-
-
 
 }
