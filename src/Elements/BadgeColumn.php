@@ -7,11 +7,6 @@ use Advicepharma\Tablegenerator\Contracts\CustomColumnContract;
 
 class BadgeColumn extends Column implements CustomColumnContract{
 
-    public array $properties;
-
-
-
-
     public function __construct(){
         parent::__construct();
 
