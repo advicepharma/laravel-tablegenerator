@@ -12,7 +12,14 @@ class Column implements ColumnContract{
      *
      * @var string
      */
-    public string $field;
+    public string $field = "";
+
+    /**
+     * Database filter key
+     *
+     * @var string
+     */
+    public string $filter_key = "";
 
     /**
      * Header
@@ -76,6 +83,25 @@ class Column implements ColumnContract{
             return $this->field;
         }else{
             $this->field = $field;
+
+            if(!$this->filter_key){
+                $this->filter_key = $this->field;
+            }
+            return $this;
+        }
+    }
+
+    /**
+     * Get/Set filter_key
+     *
+     * @param string|null $filter_key
+     * @return Column
+     */
+    public function filterKey($filter_key = null){
+        if($filter_key === null){
+            return $this->fiefilter_keyld;
+        }else{
+            $this->filter_key = $filter_key;
             return $this;
         }
     }
