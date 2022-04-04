@@ -10,4 +10,5 @@ interface ColumnContract{
     public function sortable();
     public function is_filtrable();
     public function is_sortable();
+    public function permission($permission);
 }

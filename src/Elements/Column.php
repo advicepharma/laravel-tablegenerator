@@ -42,9 +42,34 @@ class Column implements ColumnContract{
      */
     public bool $sortable;
 
+    /**
+     * Permission
+     *
+     * @var string
+     */
+    public string $permission;
+
+    /**
+     * Column Type
+     *
+     * @var string
+     */
+    public $type = '';
+
+    /**
+     * Column Properties
+     *
+     * @var array
+     */
+    public $properties = [];
+
+    /**
+     * Constructor
+     */
     public function __construct(){
         $this->sortable = false;
         $this->filtrable = false;
+        $this->permission = "";
     }
 
     /**
@@ -132,6 +157,39 @@ class Column implements ColumnContract{
      */
     public function sortable(){
         $this->sortable = true;
+        return $this;
+    }
+
+    /**
+     * Set the permission related to this collumn
+     *
+     * @param string $permission
+     * @return Column
+     */
+    public function permission($permission){
+        $this->permission = $permission;
+        return $this;
+    }
+
+    /**
+     * Set column type
+     *
+     * @param string $type
+     * @return Column
+     */
+    public function type($type){
+        $this->type = $type;
+        return $this;
+    }
+
+    /**
+     * Set column properties
+     *
+     * @param array $properties
+     * @return Column
+     */
+    public function properties($properties){
+        $this->properties = $properties;
         return $this;
     }
 
