@@ -60,7 +60,7 @@ class Tablegenerator
      *
      * @var string
      */
-    protected string $resource = '';
+    protected string $resource = \Advicepharma\Tablegenerator\Resources\GeneralResource::class;
 
     private $filters = null;
     private $sorts = null;
@@ -161,7 +161,7 @@ class Tablegenerator
 
         if($this->filter){
             $this->filters = $this->filters ?? $this->table->generateFilters();
-            $this->query = $this->query->allowedFilters($this->filters);
+            $this->query = $this->query->allowedFilters(collect($this->filters)->map(fn($filter) => $filter['filter_key'])->toArray());
         }
 
         if($this->sort){
@@ -175,11 +175,11 @@ class Tablegenerator
             $this->query = $this->query->get();
         }
 
+        //dd($this->query);
+
         return [
             'columns' => $this->table->generateColumns(),
-            'data' => ($this->resource
-                        ? $this->resource::collection($this->query)->response()->getData(true)
-                        : $this->query)
+            'data' => $this->resource::collection($this->query)->response()->getData(true)
         ];
 
     }
