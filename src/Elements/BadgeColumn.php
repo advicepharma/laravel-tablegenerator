@@ -7,13 +7,10 @@ use Advicepharma\Tablegenerator\Contracts\CustomColumnContract;
 
 class BadgeColumn extends Column implements CustomColumnContract{
 
-    public array $properties;
-
-    public $type = 'badge';
-
-
     public function __construct(){
         parent::__construct();
+
+        $this->type = 'badge';
 
         $this->properties = [
             'color' => '#ffffff',
