@@ -88,7 +88,10 @@ class Table{
                     ->filter(function ($item, $key) {
                         return $item->is_filtrable();
                     })->map(function($item){
-                        return $item->field();
+                        return [
+                            'field' => $item->field(),
+                            'filter_key' => $item->filterKey()
+                        ];
                     })
                     ->toArray();
     }

@@ -161,7 +161,7 @@ class Tablegenerator
 
         if($this->filter){
             $this->filters = $this->filters ?? $this->table->generateFilters();
-            $this->query = $this->query->allowedFilters($this->filters);
+            $this->query = $this->query->allowedFilters(collect($this->filters)->map(fn($filter) => $filter['filter_key'])->toArray());
         }
 
         if($this->sort){
