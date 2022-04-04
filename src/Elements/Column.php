@@ -99,7 +99,7 @@ class Column implements ColumnContract{
      */
     public function filterKey($filter_key = null){
         if($filter_key === null){
-            return $this->fiefilter_keyld;
+            return $this->filter_key;
         }else{
             $this->filter_key = $filter_key;
             return $this;
