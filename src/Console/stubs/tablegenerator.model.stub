@@ -3,6 +3,7 @@
 namespace DummyNamespace;
 
 use DummyFullModelClass;
+use Spatie\QueryBuilder\QueryBuilder;
 use Advicepharma\Tablegenerator\Tablegenerator;
 use Advicepharma\Tablegenerator\Elements\Action;
 use Advicepharma\Tablegenerator\Elements\Column;
@@ -21,7 +22,7 @@ class DummyClass
 
         $table = new Tablegenerator;
         $table->query(ModelInstance)
-            ->withResource(DummyModelResource::class)
+            ->withResource(DummyModelResource::class)  // if you use it, don't forget to add use statement
             ->paginate()
             ->addFilter()
             ->addSorts()
