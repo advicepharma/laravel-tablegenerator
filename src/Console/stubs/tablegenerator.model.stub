@@ -1,0 +1,68 @@
+<?php
+
+namespace DummyNamespace;
+
+use DummyFullModelClass;
+use Advicepharma\Tablegenerator\Tablegenerator;
+use Advicepharma\Tablegenerator\Elements\Action;
+use Advicepharma\Tablegenerator\Elements\Column;
+use Advicepharma\Tablegenerator\Elements\BadgeColumn;
+use Advicepharma\Tablegenerator\Elements\ActionColumn;
+
+class DummyClass
+{
+    /**
+    * @return \Advicepharma\Tablegenerator\Tablegenerator
+    */
+    public static function table()
+    {
+        ModelInstance = QueryBuilder::for(DummyModelClass::class);  // add scopes or with statement
+
+
+        $table = new Tablegenerator;
+        $table->query(ModelInstance)
+            ->withResource(DummyModelResource::class)
+            ->paginate()
+            ->addFilter()
+            ->addSorts()
+            ->table()->addColumn(
+                [
+                    (new Column)
+                        ->field('id')
+                        ->label('ID')
+                        ->filtrable()
+                        ->sortable(),
+
+                    (new ActionColumn)
+                        ->label('')
+                        ->addAction(
+                            auth()->user()->roles->first()->hasPermissionTo('some_permission.edit')
+                            ? (new Action)
+                                ->type(Action::ACTION_EDIT)
+                                ->properties(
+                                    [
+                                        'link_to' => '/account/entity/#id#'
+                                    ]
+                                )
+                            : null
+                        )
+                        ->addAction(
+                            auth()->user()->roles->first()->hasPermissionTo('some_permission.delete')
+                            ? (new Action)
+                                ->type(Action::ACTION_DELETE)
+                                ->properties(
+                                    [
+                                        'confirm' => true,
+                                        'confirm_message' => __('messages.confirm', ['name' => __('messages.entity')]),
+                                        'link_to' => api_route(route('entity.destroy', '#id#', false))
+                                    ]
+                                )
+                            : null
+                        )
+                ]
+            );
+
+        return $table;
+        
+    }
+}
