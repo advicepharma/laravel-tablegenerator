@@ -52,6 +52,14 @@ $table->query($users)
         );
 ```
 
+## Table creation command
+
+`php artisan make:advtable TableName --model=Model`
+
+like
+
+`php artisan make:advtable UserTable --model=User`
+
 ## Column object
 
 `label(<string>)` column label (header)
@@ -84,6 +92,7 @@ $table->->table()
         ->addColumn(
             (new Column)
                 ->field('name')
+                ->filterKey('name')
                 ->label('Name')
                 ->filtrable()
                 ->sortable()
@@ -152,6 +161,8 @@ Al you need to do is to specify the colum field with dot notation:
 ```php
 (new Column)->field('user.name')->label('User Name')
 ```
+
+If you want to filter a related field, you need to add `filterKey('user.name')` (or whatever table.field value you want to search)
 
 __Unforturnately sorting a relation field is not yet supported__
 

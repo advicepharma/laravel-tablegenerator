@@ -35,6 +35,13 @@ class Tablegenerator
     protected bool $paginate;
 
     /**
+     * Set the table exportable
+     *
+     * @var boolean
+     */
+    protected bool $exportable;
+
+    /**
      * Page size
      *
      * @var int
@@ -119,6 +126,16 @@ class Tablegenerator
     public function paginate($paginate = true, int $pagesize = 20){
         $this->paginate = $paginate;
         $this->pagesize = $pagesize;
+        return $this;
+    }
+
+    /**
+     * Set the table as pagination
+     *
+     * @return void
+     */
+    public function exportable(){
+        $this->exportable = true;
         return $this;
     }
 

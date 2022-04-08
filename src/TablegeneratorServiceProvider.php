@@ -3,6 +3,7 @@
 namespace Advicepharma\Tablegenerator;
 
 use Illuminate\Support\ServiceProvider;
+use Advicepharma\Tablegenerator\Console\TableGeneratorMakeCommand;
 
 class TablegeneratorServiceProvider extends ServiceProvider
 {
@@ -40,7 +41,9 @@ class TablegeneratorServiceProvider extends ServiceProvider
             ], 'lang');*/
 
             // Registering package commands.
-            // $this->commands([]);
+            $this->commands([
+                TableGeneratorMakeCommand::class,
+            ]);
         }
     }
 
