@@ -186,7 +186,7 @@ If you discover any security related issues, please email giacomo.garavaglia@adv
 
 ## Credits
 
-- [Giacomo Garavaglia](https://github.com/advicepharma)
+- [Giacomo Garavaglia](https://github.com/giagara)
 
 ## License
 
