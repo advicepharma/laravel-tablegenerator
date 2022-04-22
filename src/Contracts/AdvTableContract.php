@@ -4,6 +4,6 @@ namespace Advicepharma\Tablegenerator\Contracts;
 
 interface AdvTableContract{
 
-    public function table();
+    public static function table();
     
 }
