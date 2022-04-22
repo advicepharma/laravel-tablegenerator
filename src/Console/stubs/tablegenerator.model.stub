@@ -4,7 +4,7 @@ namespace DummyNamespace;
 
 use DummyFullModelClass;
 use Spatie\QueryBuilder\QueryBuilder;
-use Advicepharma\Tablegenerator\Contracts\AdvTableContract
+use Advicepharma\Tablegenerator\Contracts\AdvTableContract;
 use Advicepharma\Tablegenerator\Tablegenerator;
 use Advicepharma\Tablegenerator\Elements\Action;
 use Advicepharma\Tablegenerator\Elements\Column;
