@@ -16,7 +16,7 @@ class DummyClass implements AdvTableContract
     /**
     * @return \Advicepharma\Tablegenerator\Tablegenerator
     */
-    public static function table()
+    public static function table($params = null)
     {
         ModelInstance = QueryBuilder::for(DummyModelClass::class);  // add scopes or with statement
 
