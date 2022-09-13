@@ -50,6 +50,13 @@ class Column implements ColumnContract{
     public string $permission;
 
     /**
+     * Filter options
+     *
+     * @var array
+     */
+    public array $filter_options;
+
+    /**
      * Column Type
      *
      * @var string
@@ -104,6 +111,18 @@ class Column implements ColumnContract{
             $this->filter_key = $filter_key;
             return $this;
         }
+    }
+
+    /**
+     * Add filter options
+     *
+     * @param array $options
+     * @return Column
+     */
+    public function withOptions(array $options){
+        $this->filter_options = $options;
+
+        return $this;
     }
 
     /**
