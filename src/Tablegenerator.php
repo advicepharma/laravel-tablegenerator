@@ -76,97 +76,121 @@ class Tablegenerator
      * Construct the object
      */
     public function __construct(){
+
         $this->table = new Table;
         $this->paginate = false;
         $this->filter = false;
         $this->sort = false;
+
     }
 
     /**
      * Return the Table object
      *
-     * @return void
+     * @return Table
      */
-    public function table(){
+    public function table() : Table{
+
         return $this->table;
+
     }
 
     /**
      * Set the query
      *
      * @param Object $query
-     * @return void
+     * @return Tablegenerator
      */
-    public function query($query){
+    public function query(Object $query) : Tablegenerator{
+
         throw_unless(
             $query instanceof QueryBuilder,
             InvalidQuery::make($query)
         );
 
         $this->query = $query;
+
         return $this;
+
     }
 
     /**
      * Add resource object
      *
      * @param string $resource
-     * @return Table
+     * @return static
      */
     public function withResource(string $resource){
+
         $this->resource = $resource;
+
         return $this;
+
     }
 
     /**
      * Set the table as pagination
      *
-     * @return void
+     * @param boolean $paginate
+     * @param integer $pagesize
+     * @return static
      */
-    public function paginate($paginate = true, int $pagesize = 20){
+    public function paginate(bool $paginate = true, int $pagesize = 20) : static{
+
         $this->paginate = $paginate;
         $this->pagesize = $pagesize;
+
         return $this;
+
     }
 
     /**
      * Set the table as pagination
      *
-     * @return void
+     * @return static
      */
-    public function exportable(){
+    public function exportable() : static{
+
         $this->exportable = true;
+
         return $this;
+
     }
 
     /**
      * Add filters
      *
      * @param array|bool $filters
-     * @return void
+     * @return static
      */
-    public function addFilter($filters = null){
+    public function addFilter(array|bool $filters = null) : static{
+
         if($filters !== null){
             $this->filters = $filters;
         }
 
         $this->filter = true;
+
         return $this;
+
     }
 
     /**
      * Ass sort
      *
      * @param array|bool $sorts
-     * @return void
+     * @return static
      */
-    public function addSorts($sorts = null){
+    public function addSorts(array|bool $sorts = null) : static{
+
         if($sorts !== null){
             $this->sorts = $sorts;
         }
 
         $this->sort = true;
+
         return $this;
+
     }
 
     /**
@@ -174,7 +198,7 @@ class Tablegenerator
      *
      * @return array
      */
-    public function generate(){
+    public function generate() : array{
 
         if($this->filter){
             $this->filters = $this->filters ?? $this->table->generateFilters();

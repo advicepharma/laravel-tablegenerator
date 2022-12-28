@@ -36,7 +36,7 @@ class Table{
      * Add a new column
      *
      * @param Column|array $column
-     * @return Table
+     * @return static
      */
     public function addColumn($column){
         if(\is_array($column)){
