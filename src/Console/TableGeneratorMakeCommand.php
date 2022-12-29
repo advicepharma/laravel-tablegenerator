@@ -37,9 +37,7 @@ class TableGeneratorMakeCommand extends GeneratorCommand
      */
     protected function getStub()
     {
-
         return $this->resolveStubPath('/stubs/tablegenerator.model.stub');
-
     }
 
     /**
@@ -50,7 +48,7 @@ class TableGeneratorMakeCommand extends GeneratorCommand
      */
     protected function getDefaultNamespace($rootNamespace)
     {
-        return $rootNamespace . '\AdvTables';
+        return $rootNamespace.'\AdvTables';
     }
 
     /**
@@ -65,7 +63,7 @@ class TableGeneratorMakeCommand extends GeneratorCommand
         $replace = [];
         if ($this->option('model')) {
             $replace = $this->buildModelReplacements($replace);
-        }else{
+        } else {
             $replace = $this->buildModelReplacements($replace);
         }
 

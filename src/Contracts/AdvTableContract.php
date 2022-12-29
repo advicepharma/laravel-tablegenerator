@@ -2,8 +2,7 @@
 
 namespace Advicepharma\Tablegenerator\Contracts;
 
-interface AdvTableContract{
-
+interface AdvTableContract
+{
     public static function table(array $params = null);
-    
 }

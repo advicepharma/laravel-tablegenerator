@@ -18,10 +18,10 @@ trait WithModelStub
         $modelClass = $this->parseModel($this->option('model'));
 
         return array_merge($replace, [
-            'DummyFullModelClass'   => $modelClass,
-            'DummyModelClass'       => class_basename($modelClass),
-            'DummyModelResource'    => class_basename($modelClass) . "Resource",
-            'ModelInstance'         => '$' . Str::lower(class_basename($modelClass)),
+            'DummyFullModelClass' => $modelClass,
+            'DummyModelClass' => class_basename($modelClass),
+            'DummyModelResource' => class_basename($modelClass).'Resource',
+            'ModelInstance' => '$'.Str::lower(class_basename($modelClass)),
         ]);
     }
 
@@ -48,8 +48,8 @@ trait WithModelStub
         }
 
         $model = is_dir(app_path('Models'))
-            ? $rootNamespace . 'Models\\' . $model
-            : $rootNamespace . $model;
+            ? $rootNamespace.'Models\\'.$model
+            : $rootNamespace.$model;
 
         return $model;
     }
@@ -64,6 +64,6 @@ trait WithModelStub
     {
         return file_exists($customPath = $this->laravel->basePath(trim($stub, '/')))
             ? $customPath
-            : __DIR__ . $stub;
+            : __DIR__.$stub;
     }
 }

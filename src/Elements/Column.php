@@ -2,24 +2,23 @@
 
 namespace Advicepharma\Tablegenerator\Elements;
 
-use Advicepharma\Tablegenerator\Contracts;
 use Advicepharma\Tablegenerator\Contracts\ColumnContract;
 
-class Column implements ColumnContract{
-
+class Column implements ColumnContract
+{
     /**
      * Database field
      *
      * @var string
      */
-    public string $field = "";
+    public string $field = '';
 
     /**
      * Database filter key
      *
      * @var string
      */
-    public string $filter_key = "";
+    public string $filter_key = '';
 
     /**
      * Header
@@ -31,14 +30,14 @@ class Column implements ColumnContract{
     /**
      * Is filtrable
      *
-     * @var boolean
+     * @var bool
      */
     public bool $filtrable;
 
     /**
      * Is sortable
      *
-     * @var boolean
+     * @var bool
      */
     public bool $sortable;
 
@@ -73,105 +72,89 @@ class Column implements ColumnContract{
     /**
      * Constructor
      */
-    public function __construct(){
+    public function __construct()
+    {
         $this->sortable = false;
         $this->filtrable = false;
-        $this->permission = "";
+        $this->permission = '';
     }
 
     /**
      * Get/Set field
      *
-     * @param string|null $field
+     * @param  string|null  $field
      * @return static
      */
-    public function field($field = null) : static{
-
-        if($field === null){
-
+    public function field($field = null): static
+    {
+        if ($field === null) {
             return $this->field;
-
-        }else{
-
+        } else {
             $this->field = $field;
 
-            if(!$this->filter_key){
+            if (! $this->filter_key) {
                 $this->filter_key = $this->field;
             }
 
             return $this;
-
         }
-        
     }
 
     /**
      * Get/Set filter_key
      *
-     * @param string|null $filter_key
+     * @param  string|null  $filter_key
      * @return static
      */
-    public function filterKey($filter_key = null) : static{
-
-        if($filter_key === null){
-
+    public function filterKey($filter_key = null): static
+    {
+        if ($filter_key === null) {
             return $this->filter_key;
-
-        }else{
-
+        } else {
             $this->filter_key = $filter_key;
 
             return $this;
-
         }
-
     }
 
     /**
      * Add filter options
      *
-     * @param array $options
+     * @param  array  $options
      * @return static
      */
-    public function withOptions(array $options) : static{
-
+    public function withOptions(array $options): static
+    {
         $this->filter_options = $options;
 
         return $this;
-
     }
 
     /**
      * Get/set label
      *
-     * @param string|null $label
+     * @param  string|null  $label
      * @return static
      */
-    public function label($label = null) : static{
-
-        if($label === null){
-
+    public function label($label = null): static
+    {
+        if ($label === null) {
             return $this->label;
-
-        }else{
-
+        } else {
             $this->label = $label;
 
             return $this;
-
         }
-
     }
 
     /**
      * Get if the table is filtrable
      *
-     * @return boolean
+     * @return bool
      */
-    public function is_filtrable() : static{
-
+    public function is_filtrable(): static
+    {
         return $this->filtrable;
-
     }
 
     /**
@@ -179,12 +162,11 @@ class Column implements ColumnContract{
      *
      * @return static
      */
-    public function filtrable() : static{
-        
+    public function filtrable(): static
+    {
         $this->filtrable = true;
 
         return $this;
-
     }
 
     /**
@@ -192,11 +174,10 @@ class Column implements ColumnContract{
      *
      * @param [type] $filtrable
      * @return static
-    */
-    public function is_sortable() : static{
-
+     */
+    public function is_sortable(): static
+    {
         return $this->sortable;
-
     }
 
     /**
@@ -204,54 +185,49 @@ class Column implements ColumnContract{
      *
      * @return static
      */
-    public function sortable() : static{
-
+    public function sortable(): static
+    {
         $this->sortable = true;
 
         return $this;
-
     }
 
     /**
      * Set the permission related to this collumn
      *
-     * @param string $permission
+     * @param  string  $permission
      * @return static
      */
-    public function permission($permission) : static{
-
+    public function permission($permission): static
+    {
         $this->permission = $permission;
 
         return $this;
-
     }
 
     /**
      * Set column type
      *
-     * @param string $type
+     * @param  string  $type
      * @return static
      */
-    public function type($type) : static{
-
+    public function type($type): static
+    {
         $this->type = $type;
 
         return $this;
-
     }
 
     /**
      * Set column properties
      *
-     * @param array $properties
+     * @param  array  $properties
      * @return static
      */
-    public function properties($properties) : static{
-
+    public function properties($properties): static
+    {
         $this->properties = $properties;
 
         return $this;
-
     }
-
 }

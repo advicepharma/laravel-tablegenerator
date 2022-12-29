@@ -4,7 +4,7 @@ namespace Advicepharma\Tablegenerator\Exceptions;
 
 use InvalidArgumentException;
 
-class InvalidQuery extends InvalidArgumentException
+final class InvalidQuery extends InvalidArgumentException
 {
     public static function make($query)
     {

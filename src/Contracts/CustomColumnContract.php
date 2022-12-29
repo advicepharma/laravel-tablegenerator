@@ -2,7 +2,7 @@
 
 namespace Advicepharma\Tablegenerator\Contracts;
 
-interface CustomColumnContract extends ColumnContract{
-
+interface CustomColumnContract extends ColumnContract
+{
     public function addProperty($property, $value);
 }
