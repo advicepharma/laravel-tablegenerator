@@ -152,7 +152,7 @@ class Column implements ColumnContract
      *
      * @return bool
      */
-    public function is_filtrable(): static
+    public function is_filtrable(): bool
     {
         return $this->filtrable;
     }
@@ -173,9 +173,9 @@ class Column implements ColumnContract
      * Get if the table is sortable
      *
      * @param [type] $filtrable
-     * @return static
+     * @return bool
      */
-    public function is_sortable(): static
+    public function is_sortable(): bool
     {
         return $this->sortable;
     }
