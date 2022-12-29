@@ -4,7 +4,7 @@ namespace Advicepharma\Tablegenerator\Exceptions;
 
 use InvalidArgumentException;
 
-class InvalidColumn extends InvalidArgumentException
+final class InvalidColumn extends InvalidArgumentException
 {
     public static function make($column)
     {

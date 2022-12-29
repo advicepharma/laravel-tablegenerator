@@ -2,11 +2,10 @@
 
 namespace Advicepharma\Tablegenerator\Elements;
 
-use Advicepharma\Tablegenerator\Contracts;
 use Advicepharma\Tablegenerator\Contracts\ColumnContract;
 
-class ActionColumn extends Column implements ColumnContract{
-
+class ActionColumn extends Column implements ColumnContract
+{
     /**
      * List of actions
      *
@@ -21,10 +20,11 @@ class ActionColumn extends Column implements ColumnContract{
      */
     //public string $type = 'actions';
 
-    public function  __construct(){
+    public function __construct()
+    {
         parent::__construct();
         $this->actions = [];
-        $this->type = "actions";
+        $this->type = 'actions';
     }
 
     /**
@@ -33,12 +33,12 @@ class ActionColumn extends Column implements ColumnContract{
      * @param [type] $action
      * @return ActionColumn
      */
-    public function addAction($action){
-        if($action !== null){
+    public function addAction($action)
+    {
+        if ($action !== null) {
             $this->actions[] = $action;
         }
 
         return $this;
     }
-
 }

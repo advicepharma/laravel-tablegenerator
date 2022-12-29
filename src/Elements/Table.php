@@ -2,13 +2,10 @@
 
 namespace Advicepharma\Tablegenerator\Elements;
 
-use Illuminate\Support\Collection;
-use Advicepharma\Tablegenerator\Elements\Column;
-use Advicepharma\Tablegenerator\Elements\ActionColumn;
 use Advicepharma\Tablegenerator\Exceptions\InvalidColumn;
 
-class Table{
-
+class Table
+{
     /**
      * Array of columns
      *
@@ -19,7 +16,8 @@ class Table{
     /**
      * Constructor
      */
-    public function __construct(){
+    public function __construct()
+    {
         $this->columns = [];
     }
 
@@ -28,22 +26,24 @@ class Table{
      *
      * @return array
      */
-    public function columns() : array{
+    public function columns(): array
+    {
         return $this->columns;
     }
 
     /**
      * Add a new column
      *
-     * @param Column|array $column
-     * @return Table
+     * @param  Column|array  $column
+     * @return static
      */
-    public function addColumn($column){
-        if(\is_array($column)){
-            foreach($column as $col){
+    public function addColumn($column): static
+    {
+        if (\is_array($column)) {
+            foreach ($column as $col) {
                 $this->_addColum($col);
             }
-        }else{
+        } else {
             $this->_addColum($column);
         }
 
@@ -53,16 +53,19 @@ class Table{
     /**
      * Add column to array
      *
-     * @param Column $column
-     * @return Table
+     * @param  Column  $column
+     * @return static
      */
-    private function _addColum(Column $column){
+    private function _addColum(Column $column): static
+    {
         throw_unless(
             $column instanceof Column || $column instanceof ActionColumn,
             InvalidColumn::make($column)
         );
 
         $this->columns[] = $column;
+
+        return $this;
     }
 
     /**
@@ -70,10 +73,11 @@ class Table{
      *
      * @return array
      */
-    public function generateColumns(){
+    public function generateColumns()
+    {
         return collect($this->columns)
                     ->filter(function ($item, $key) {
-                        return $item->permission === "" || auth()->user()->roles->first()->hasPermissionTo($item->permission);
+                        return $item->permission === '' || auth()->user()->roles->first()->hasPermissionTo($item->permission);
                     })
                     ->toArray();
     }
@@ -83,14 +87,15 @@ class Table{
      *
      * @return array
      */
-    public function generateFilters(){
+    public function generateFilters()
+    {
         return collect($this->columns)
                     ->filter(function ($item, $key) {
                         return $item->is_filtrable();
-                    })->map(function($item){
+                    })->map(function ($item) {
                         return [
                             'field' => $item->field(),
-                            'filter_key' => $item->filterKey()
+                            'filter_key' => $item->filterKey(),
                         ];
                     })
                     ->toArray();
@@ -101,15 +106,14 @@ class Table{
      *
      * @return array
      */
-    public function generateSorts(){
+    public function generateSorts()
+    {
         return collect($this->columns)
                     ->filter(function ($item, $key) {
                         return $item->is_sortable();
-                    })->map(function($item){
+                    })->map(function ($item) {
                         return $item->field();
                     })
                     ->toArray();
-
     }
-
 }

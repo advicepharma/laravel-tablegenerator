@@ -2,8 +2,8 @@
 
 namespace Advicepharma\Tablegenerator;
 
-use Illuminate\Support\ServiceProvider;
 use Advicepharma\Tablegenerator\Console\TableGeneratorMakeCommand;
+use Illuminate\Support\ServiceProvider;
 
 class TablegeneratorServiceProvider extends ServiceProvider
 {
