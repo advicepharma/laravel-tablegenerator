@@ -83,9 +83,9 @@ class Column implements ColumnContract
      * Get/Set field
      *
      * @param  string|null  $field
-     * @return static
+     * @return static|string
      */
-    public function field($field = null): static
+    public function field($field = null): static|string
     {
         if ($field === null) {
             return $this->field;
@@ -104,9 +104,9 @@ class Column implements ColumnContract
      * Get/Set filter_key
      *
      * @param  string|null  $filter_key
-     * @return static
+     * @return static|string
      */
-    public function filterKey($filter_key = null): static
+    public function filterKey($filter_key = null): static|string
     {
         if ($filter_key === null) {
             return $this->filter_key;
