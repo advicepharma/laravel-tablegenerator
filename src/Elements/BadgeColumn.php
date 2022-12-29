@@ -41,7 +41,7 @@ class BadgeColumn extends Column implements CustomColumnContract
         return $this;
     }
 
-    public function field($field = null)
+    public function field($field = null): static|string
     {
         if ($field !== null) {
             $this->properties['field'] = $field;
