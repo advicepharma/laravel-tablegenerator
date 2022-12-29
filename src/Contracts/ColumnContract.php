@@ -4,9 +4,9 @@ namespace Advicepharma\Tablegenerator\Contracts;
 
 interface ColumnContract
 {
-    public function field($field = null);
+    public function field($field = null): static|string;
 
-    public function label($label = null);
+    public function label($label = null): static|string;
 
     public function filtrable();
 
